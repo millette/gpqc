@@ -16,9 +16,9 @@ export default ({
   data: { allUserCountsJson }
 }) => {
   const otherStr = order === 'starsProrata' ? 'by contribs' : 'by stars'
-
-  const p = pathname.split('/').slice(-4)
-  p[1] = order === 'starsProrata' ? 'by2' : 'by'
+  const p0 = pathname.split('/')
+  const p = p0.slice(-4)
+  p[0] = order === 'starsProrata' ? '/by2' : '/by'
   const other = p.join('/')
   return (
     <div>
