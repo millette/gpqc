@@ -1,5 +1,3 @@
 import Repo from './repo'
 
-export {
-  Repo
-}
+export { Repo }

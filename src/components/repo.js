@@ -15,19 +15,43 @@ export default ({ node }) => {
   let subtitle
   for (r in node) {
     if (r === 'nameWithOwner') {
-      [subtitle, title] = node.nameWithOwner.split('/')
+      ;[subtitle, title] = node.nameWithOwner.split('/')
     } else if (r === 'primaryLanguage') {
-      ds.push(<li key='primaryLanguage'><b>{r}</b>: <Link to={`/by/lng/${(node.primaryLanguage || 'unspecified').toLowerCase()}`}>{node.primaryLanguage || 'unspecified'}</Link></li>)
+      ds.push(
+        <li key='primaryLanguage'>
+          <b>{r}</b>:{' '}
+          <Link
+            to={`/by/lng/${(
+              node.primaryLanguage || 'unspecified'
+            ).toLowerCase()}`}
+          >
+            {node.primaryLanguage || 'unspecified'}
+          </Link>
+        </li>
+      )
     } else if (r === 'license') {
-      ds.push(<li key='license'><b>{r}</b>: <Link to={`/by/lic/${(node.license || 'unspecified').toLowerCase()}`}>{node.license || 'unspecified'}</Link></li>)
+      ds.push(
+        <li key='license'>
+          <b>{r}</b>:{' '}
+          <Link to={`/by/lic/${(node.license || 'unspecified').toLowerCase()}`}>
+            {node.license || 'unspecified'}
+          </Link>
+        </li>
+      )
     } else {
-      ds.push(<li key={r}><b>{r}</b>: {node[r]}</li>)
+      ds.push(
+        <li key={r}>
+          <b>{r}</b>: {node[r]}
+        </li>
+      )
     }
   }
   return (
     <div style={style}>
       <h2 style={{ textOverflow: 'ellipsis' }}>{title}</h2>
-      <h3 style={{ textOverflow: 'ellipsis' }}><small>by</small> {subtitle}</h3>
+      <h3 style={{ textOverflow: 'ellipsis' }}>
+        <small>by</small> {subtitle}
+      </h3>
       <ul>{ds}</ul>
     </div>
   )
