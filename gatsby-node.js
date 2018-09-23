@@ -118,3 +118,16 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     })
   })
 }
+
+exports.onCreateWebpackConfig = ({ stage, actions: { setWebpackConfig } }) => {
+  if (stage !== 'build-javascript') {
+    return
+  }
+  setWebpackConfig({
+    resolve: {
+      alias: {
+        'node-fetch$': 'node-fetch/lib/index.js'
+      }
+    }
+  })
+}
