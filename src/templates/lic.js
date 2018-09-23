@@ -10,7 +10,11 @@ export default ({ data: { allUserCountsJson } }) => (
         new Set(allUserCountsJson.edges.map(({ node: { license } }) => license))
       ).map(license => (
         <li>
-          <Link to={`/by/lic/${(license || 'unspecified').toLowerCase()}`}>
+          <Link
+            to={`/by/lic/${(license || 'unspecified')
+              .toLowerCase()
+              .replace('#', '-sharp')}/`}
+          >
             {license || 'unspecified'}
           </Link>
         </li>

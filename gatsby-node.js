@@ -32,7 +32,9 @@ exports.createPages = async ({ graphql, actions }) => {
     )
   ).forEach(primaryLanguage => {
     createPage({
-      path: `/by/lng/${(primaryLanguage || 'unspecified').toLowerCase()}`,
+      path: `/by/lng/${(primaryLanguage || 'unspecified')
+        .toLowerCase()
+        .replace('#', '-sharp')}/`,
       component: path.resolve('./src/templates/by.js'),
       context: {
         order: 'starsProrata',
@@ -67,7 +69,9 @@ exports.createPages = async ({ graphql, actions }) => {
     )
   ).forEach(license => {
     createPage({
-      path: `/by/lic/${(license || 'unspecified').toLowerCase()}`,
+      path: `/by/lic/${(license || 'unspecified')
+        .toLowerCase()
+        .replace('#', '-sharp')}/`,
       component: path.resolve('./src/templates/by.js'),
       context: {
         order: 'starsProrata',

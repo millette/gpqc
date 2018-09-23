@@ -15,7 +15,9 @@ export default ({ data: { allUserCountsJson } }) => (
       ).map(primaryLanguage => (
         <li>
           <Link
-            to={`/by/lng/${(primaryLanguage || 'unspecified').toLowerCase()}`}
+            to={`/by/lng/${(primaryLanguage || 'unspecified')
+              .toLowerCase()
+              .replace('#', '-sharp')}/`}
           >
             {primaryLanguage || 'unspecified'}
           </Link>

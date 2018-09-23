@@ -21,9 +21,9 @@ export default ({ node }) => {
         <li key='primaryLanguage'>
           <b>{r}</b>:{' '}
           <Link
-            to={`/by/lng/${(
-              node.primaryLanguage || 'unspecified'
-            ).toLowerCase()}`}
+            to={`/by/lng/${(node.primaryLanguage || 'unspecified')
+              .toLowerCase()
+              .replace('#', '-sharp')}`}
           >
             {node.primaryLanguage || 'unspecified'}
           </Link>
@@ -33,7 +33,11 @@ export default ({ node }) => {
       ds.push(
         <li key='license'>
           <b>{r}</b>:{' '}
-          <Link to={`/by/lic/${(node.license || 'unspecified').toLowerCase()}`}>
+          <Link
+            to={`/by/lic/${(node.license || 'unspecified')
+              .toLowerCase()
+              .replace('#', '-sharp')}/`}
+          >
             {node.license || 'unspecified'}
           </Link>
         </li>
