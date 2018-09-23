@@ -29,8 +29,8 @@ export default ({
         <br />
         <Source />
       </div>
-      totalCount: {allUserCountsJson.totalCount}
-      <br />
+      Found {allUserCountsJson.totalCount}
+      {allUserCountsJson.totalCount > 48 && <>' showing 4'</>}
       <div style={style}>
         {allUserCountsJson.edges.map(({ node }, i) => (
           <Repo

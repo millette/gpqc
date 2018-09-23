@@ -7,8 +7,8 @@ import { GHLink } from '.'
 
 const style = {
   border: 'thin solid blue',
-  margin: '1rem',
-  padding: '1rem'
+  margin: '0.25rem',
+  padding: '0.25rem'
 }
 
 export default ({ by, node }) => {
@@ -16,9 +16,12 @@ export default ({ by, node }) => {
   let r
   let title
   let subtitle
+  let description
+
   for (r in node) {
     if (r === 'nameWithOwner') {
       ;[subtitle, title] = node.nameWithOwner.split('/')
+      title = title.replace(/[-_.]/g, ' ')
     } else if (r === 'primaryLanguage') {
       ds.push(
         <li key='primaryLanguage'>
@@ -45,10 +48,15 @@ export default ({ by, node }) => {
           </Link>
         </li>
       )
+    } else if (r === 'description') {
+      description = node.description
     } else if (node[r]) {
       ds.push(
         <li key={r}>
-          <b>{r}</b>: {node[r]}
+          <b>{r}</b>:{' '}
+          {r.indexOf('Prorata') === -1
+            ? node[r]
+            : `${Math.round(1000 * node[r]) / 10}%`}
         </li>
       )
     }
@@ -56,11 +64,12 @@ export default ({ by, node }) => {
   return (
     <div style={style}>
       <GHLink to={node.nameWithOwner}>
-        <h2 style={{ textOverflow: 'ellipsis' }}>{title}</h2>
+        <h2>{title}</h2>
       </GHLink>
-      <h3 style={{ textOverflow: 'ellipsis' }}>
+      <h3>
         <small>by</small> <GHLink to={subtitle}>{subtitle}</GHLink>
       </h3>
+      {description && <blockquote>{description}</blockquote>}
       <ul>{ds}</ul>
     </div>
   )
