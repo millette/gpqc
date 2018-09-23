@@ -6,6 +6,12 @@
   "engines": {
     "node": ">= 8.12.0"
   },
+  "repository": "millette/gpqc",
+  "author": {
+    "name": "Robin Millette",
+    "email": "robin@millette.info",
+    "url": "http://robin.millette.info"
+  },
   "lint-staged": {
     "*.{js,json,md}": ["prettier-standard", "git add"]
   },
