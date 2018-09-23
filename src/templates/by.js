@@ -32,7 +32,7 @@ export default ({
           <Repo
             key={i}
             by={order === 'starsProrata' ? 'by' : 'by2'}
-            node={node}
+            node={{ ...node, rank: `#${i + 1}` }}
           />
         ))}
       </div>
