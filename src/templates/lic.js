@@ -2,14 +2,21 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 
+// self
+import { Source } from '../components'
+
 export default ({ data: { allUserCountsJson } }) => (
   <div>
-    <Link to='/'>Home</Link>
+    <div>
+      <Link to='/'>Home</Link>
+      <br />
+      <Source />
+    </div>
     <ul>
       {Array.from(
         new Set(allUserCountsJson.edges.map(({ node: { license } }) => license))
       ).map(license => (
-        <li>
+        <li key={license}>
           <Link
             to={`/by/lic/${(license || 'unspecified')
               .toLowerCase()

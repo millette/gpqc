@@ -3,7 +3,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 
 // self
-import { Repo } from '../components/'
+import { Repo, Source } from '../components/'
 
 const style = {
   display: 'grid',
@@ -22,15 +22,19 @@ export default ({
   const other = p.join('/')
   return (
     <div>
-      <Link to='/'>Home</Link> | <Link to='/by/lic/'>Licenses</Link> |{' '}
-      <Link to='/by/lng/'>Languages</Link> | <Link to={other}>{otherStr}</Link>
-      <br />
+      <div>
+        <Link to='/'>Home</Link> | <Link to='/by/lic/'>Licenses</Link> |{' '}
+        <Link to='/by/lng/'>Languages</Link> |{' '}
+        <Link to={other}>{otherStr}</Link>
+        <br />
+        <Source />
+      </div>
       totalCount: {allUserCountsJson.totalCount}
       <br />
       <div style={style}>
         {allUserCountsJson.edges.map(({ node }, i) => (
           <Repo
-            key={i}
+            key={node.nameWithOwner}
             by={order === 'starsProrata' ? 'by' : 'by2'}
             node={{ ...node, rank: `#${i + 1}` }}
           />

@@ -2,9 +2,16 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 
+// self
+import { Source } from '../components'
+
 export default ({ data: { allUserCountsJson } }) => (
   <div>
-    <Link to='/'>Home</Link>
+    <div>
+      <Link to='/'>Home</Link>
+      <br />
+      <Source />
+    </div>
     <ul>
       {Array.from(
         new Set(
@@ -13,7 +20,7 @@ export default ({ data: { allUserCountsJson } }) => (
           )
         )
       ).map(primaryLanguage => (
-        <li>
+        <li key={primaryLanguage}>
           <Link
             to={`/by/lng/${(primaryLanguage || 'unspecified')
               .toLowerCase()
