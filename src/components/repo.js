@@ -2,6 +2,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+// self
+import { GHLink } from '.'
+
 const style = {
   border: 'thin solid blue',
   margin: '1rem',
@@ -52,22 +55,11 @@ export default ({ by, node }) => {
   }
   return (
     <div style={style}>
-      <a
-        target='_blank'
-        rel='noopener noreferrer'
-        href={`https://github.com/${node.nameWithOwner}`}
-      >
+      <GHLink to={node.nameWithOwner}>
         <h2 style={{ textOverflow: 'ellipsis' }}>{title}</h2>
-      </a>
+      </GHLink>
       <h3 style={{ textOverflow: 'ellipsis' }}>
-        <small>by</small>{' '}
-        <a
-          target='_blank'
-          rel='noopener noreferrer'
-          href={`https://github.com/${subtitle}`}
-        >
-          {subtitle}
-        </a>
+        <small>by</small> <GHLink to={subtitle}>{subtitle}</GHLink>
       </h3>
       <ul>{ds}</ul>
     </div>
