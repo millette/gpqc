@@ -10,12 +10,15 @@ const style = {
   gridTemplateColumns: 'repeat(2, 1fr)'
 }
 
-export default (props) => (
+export default ({ data: { allUserCountsJson } }) => (
   <div>
-    <Link to='/'>Home</Link> | <Link to='/by/lic/'>Licenses</Link> | <Link to='/by/lng/'>Languages</Link><br />
-    totalCount: {props.data.allUserCountsJson.totalCount}<br />
+    <Link to='/'>Home</Link> | <Link to='/by/lic/'>Licenses</Link> |{' '}
+    <Link to='/by/lng/'>Languages</Link>
+    <br />
+    totalCount: {allUserCountsJson.totalCount}
+    <br />
     <div style={style}>
-      {props.data.allUserCountsJson.edges.map(({ node }, i) => (
+      {allUserCountsJson.edges.map(({ node }, i) => (
         <Repo key={i} node={node} />
       ))}
     </div>
@@ -23,13 +26,14 @@ export default (props) => (
 )
 
 export const query = graphql`
-  query ($primaryLanguage: String, $license: String, $order: UserCountsJsonConnectionSortByFieldsEnum!) {
+  query(
+    $primaryLanguage: String
+    $license: String
+    $order: UserCountsJsonConnectionSortByFieldsEnum!
+  ) {
     allUserCountsJson(
       limit: 48
-      sort: {
-        fields: [$order]
-        order: DESC
-      }
+      sort: { fields: [$order], order: DESC }
       filter: {
         forkCount: { gt: 3 }
         stargazersCount: { gt: 3 }
