@@ -11,9 +11,6 @@ export default () => (
       <li>
         <Link to='/by/lng/'>Languages</Link>
       </li>
-      <li>
-        <Link to='/nowhere/'>Nowhere</Link>
-      </li>
     </ul>
   </div>
 )
