@@ -23,7 +23,7 @@ export default ({ by, node }) => {
           <Link
             to={`/${by}/lng/${(node.primaryLanguage || 'unspecified')
               .toLowerCase()
-              .replace('#', '-sharp')}`}
+              .replace('#', '-sharp')}/`}
           >
             {node.primaryLanguage || 'unspecified'}
           </Link>
@@ -52,9 +52,22 @@ export default ({ by, node }) => {
   }
   return (
     <div style={style}>
-      <h2 style={{ textOverflow: 'ellipsis' }}>{title}</h2>
+      <a
+        target='_blank'
+        rel='noopener noreferrer'
+        href={`https://github.com/${node.nameWithOwner}`}
+      >
+        <h2 style={{ textOverflow: 'ellipsis' }}>{title}</h2>
+      </a>
       <h3 style={{ textOverflow: 'ellipsis' }}>
-        <small>by</small> {subtitle}
+        <small>by</small>{' '}
+        <a
+          target='_blank'
+          rel='noopener noreferrer'
+          href={`https://github.com/${subtitle}`}
+        >
+          {subtitle}
+        </a>
       </h3>
       <ul>{ds}</ul>
     </div>
