@@ -10,20 +10,34 @@ const style = {
   gridTemplateColumns: 'repeat(2, 1fr)'
 }
 
-export default ({ data: { allUserCountsJson } }) => (
-  <div>
-    <Link to='/'>Home</Link> | <Link to='/by/lic/'>Licenses</Link> |{' '}
-    <Link to='/by/lng/'>Languages</Link>
-    <br />
-    totalCount: {allUserCountsJson.totalCount}
-    <br />
-    <div style={style}>
-      {allUserCountsJson.edges.map(({ node }, i) => (
-        <Repo key={i} node={node} />
-      ))}
+export default ({
+  location: { pathname },
+  pageContext: { order },
+  data: { allUserCountsJson }
+}) => {
+  const otherStr = order === 'starsProrata' ? 'by contribs' : 'by stars'
+  const p = pathname.split('/')
+  p[1] = order === 'starsProrata' ? 'by2' : 'by'
+  const other = p.join('/')
+  return (
+    <div>
+      <Link to='/'>Home</Link> | <Link to='/by/lic/'>Licenses</Link> |{' '}
+      <Link to='/by/lng/'>Languages</Link> | <Link to={other}>{otherStr}</Link>
+      <br />
+      totalCount: {allUserCountsJson.totalCount}
+      <br />
+      <div style={style}>
+        {allUserCountsJson.edges.map(({ node }, i) => (
+          <Repo
+            key={i}
+            by={order === 'starsProrata' ? 'by' : 'by2'}
+            node={node}
+          />
+        ))}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export const query = graphql`
   query(

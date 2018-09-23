@@ -8,7 +8,7 @@ const style = {
   padding: '1rem'
 }
 
-export default ({ node }) => {
+export default ({ by, node }) => {
   const ds = []
   let r
   let title
@@ -21,7 +21,7 @@ export default ({ node }) => {
         <li key='primaryLanguage'>
           <b>{r}</b>:{' '}
           <Link
-            to={`/by/lng/${(node.primaryLanguage || 'unspecified')
+            to={`/${by}/lng/${(node.primaryLanguage || 'unspecified')
               .toLowerCase()
               .replace('#', '-sharp')}`}
           >
@@ -34,7 +34,7 @@ export default ({ node }) => {
         <li key='license'>
           <b>{r}</b>:{' '}
           <Link
-            to={`/by/lic/${(node.license || 'unspecified')
+            to={`/${by}/lic/${(node.license || 'unspecified')
               .toLowerCase()
               .replace('#', '-sharp')}/`}
           >

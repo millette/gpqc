@@ -19,7 +19,15 @@ export default ({ data: { allUserCountsJson } }) => (
               .toLowerCase()
               .replace('#', '-sharp')}/`}
           >
-            {primaryLanguage || 'unspecified'}
+            by stars {primaryLanguage || 'unspecified'}
+          </Link>{' '}
+          or{' '}
+          <Link
+            to={`/by2/lng/${(primaryLanguage || 'unspecified')
+              .toLowerCase()
+              .replace('#', '-sharp')}/`}
+          >
+            by contribs {primaryLanguage || 'unspecified'}
           </Link>
         </li>
       ))}

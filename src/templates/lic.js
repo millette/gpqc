@@ -15,7 +15,15 @@ export default ({ data: { allUserCountsJson } }) => (
               .toLowerCase()
               .replace('#', '-sharp')}/`}
           >
-            {license || 'unspecified'}
+            by stars {license || 'unspecified'}
+          </Link>{' '}
+          or{' '}
+          <Link
+            to={`/by2/lic/${(license || 'unspecified')
+              .toLowerCase()
+              .replace('#', '-sharp')}/`}
+          >
+            by contribs {license || 'unspecified'}
           </Link>
         </li>
       ))}

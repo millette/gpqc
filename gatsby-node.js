@@ -3,9 +3,13 @@
 // core
 const path = require('path')
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-  const result2 = await graphql(`
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
+  createPage({
+    path: '/by/lng/',
+    component: path.resolve('./src/templates/lng.js')
+  })
+
+  const result = await graphql(`
     {
       allUserCountsJson(
         filter: { forkCount: { gt: 3 }, stargazersCount: { gt: 3 } }
@@ -19,14 +23,9 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  createPage({
-    path: '/by/lng/',
-    component: path.resolve('./src/templates/lng.js')
-  })
-
   Array.from(
     new Set(
-      result2.data.allUserCountsJson.edges.map(
+      result.data.allUserCountsJson.edges.map(
         ({ node: { primaryLanguage } }) => primaryLanguage
       )
     )
@@ -43,7 +42,31 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const result = await graphql(`
+  Array.from(
+    new Set(
+      result.data.allUserCountsJson.edges.map(
+        ({ node: { primaryLanguage } }) => primaryLanguage
+      )
+    )
+  ).forEach(primaryLanguage => {
+    createPage({
+      path: `/by2/lng/${(primaryLanguage || 'unspecified')
+        .toLowerCase()
+        .replace('#', '-sharp')}/`,
+      component: path.resolve('./src/templates/by.js'),
+      context: {
+        order: 'contribsProrata',
+        primaryLanguage
+      }
+    })
+  })
+
+  createPage({
+    path: '/by/lic/',
+    component: path.resolve('./src/templates/lic.js')
+  })
+
+  const resultB = await graphql(`
     {
       allUserCountsJson(
         filter: { forkCount: { gt: 3 }, stargazersCount: { gt: 3 } }
@@ -56,14 +79,10 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  createPage({
-    path: '/by/lic/',
-    component: path.resolve('./src/templates/lic.js')
-  })
 
   Array.from(
     new Set(
-      result.data.allUserCountsJson.edges.map(
+      resultB.data.allUserCountsJson.edges.map(
         ({ node: { license } }) => license
       )
     )
@@ -75,6 +94,25 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve('./src/templates/by.js'),
       context: {
         order: 'starsProrata',
+        license
+      }
+    })
+  })
+
+  Array.from(
+    new Set(
+      resultB.data.allUserCountsJson.edges.map(
+        ({ node: { license } }) => license
+      )
+    )
+  ).forEach(license => {
+    createPage({
+      path: `/by2/lic/${(license || 'unspecified')
+        .toLowerCase()
+        .replace('#', '-sharp')}/`,
+      component: path.resolve('./src/templates/by.js'),
+      context: {
+        order: 'contribsProrata',
         license
       }
     })
