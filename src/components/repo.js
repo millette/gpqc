@@ -42,7 +42,7 @@ export default ({ node }) => {
           </Link>
         </li>
       )
-    } else {
+    } else if (node[r]) {
       ds.push(
         <li key={r}>
           <b>{r}</b>: {node[r]}
