@@ -3,7 +3,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 
 // self
-import { Repo, Source } from '../components/'
+import { Repo, Source, Graph } from '../components/'
 
 const style = {
   display: 'grid',
@@ -20,6 +20,41 @@ export default ({
   const p = p0.slice(-4)
   p[0] = order === 'starsProrata' ? '/by2' : '/by'
   const other = p.join('/')
+
+  const s = {}
+  allUserCountsJson.edges.forEach(({ node: { license } }) => {
+    if (!license) {
+      license = 'unspecified'
+    }
+    if (s[license]) {
+      ++s[license]
+    } else {
+      s[license] = 1
+    }
+  })
+
+  const values = []
+  let label
+  for (label in s) {
+    values.push({
+      label,
+      personnes: s[label]
+    })
+  }
+
+  /*
+  const values = [
+    {
+      label: 'gogo',
+      personnes: 35
+    },
+    {
+      label: 'bob',
+      personnes: 55
+    }
+  ]
+  */
+
   return (
     <div>
       <div>
@@ -30,8 +65,9 @@ export default ({
         <Source />
       </div>
       Found {allUserCountsJson.totalCount}
-      {allUserCountsJson.totalCount > 48 && <>' showing 4'</>}
+      {allUserCountsJson.totalCount > 48 && <>{'; showing 48'}</>}
       <div style={style}>
+        <Graph values={values} />
         {allUserCountsJson.edges.map(({ node }, i) => (
           <Repo
             key={node.nameWithOwner}

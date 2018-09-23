@@ -6,7 +6,7 @@ import { Link } from 'gatsby'
 import { GHLink } from '.'
 
 const style = {
-  border: 'thin solid blue',
+  // border: 'thin solid blue',
   margin: '0.25rem',
   padding: '0.25rem'
 }
