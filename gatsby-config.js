@@ -16,6 +16,19 @@ module.exports = {
       }
     },
     'gatsby-transformer-json',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        // icon: '',
+        name: 'Québec Projects (GitHub) - RoLLodeQc',
+        short_name: 'Québec GitHub Projects',
+        lang: 'en',
+        start_url: `/`,
+        background_color: 'white',
+        theme_color: 'black',
+        display: 'fullscreen'
+      }
+    },
     'gatsby-plugin-offline'
   ]
 }
