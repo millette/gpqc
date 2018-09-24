@@ -19,7 +19,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        // icon: '',
+        icon: 'src/images/logo.png',
         name: 'Québec Projects (GitHub) - RoLLodeQc',
         short_name: 'Québec GitHub Projects',
         lang: 'en',
