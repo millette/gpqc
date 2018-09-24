@@ -120,7 +120,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 }
 
 exports.onCreateWebpackConfig = ({ stage, actions: { setWebpackConfig } }) => {
-  if (stage !== 'build-javascript') {
+  if (stage !== 'build-html') {
     return
   }
   setWebpackConfig({
