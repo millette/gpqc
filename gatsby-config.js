@@ -15,6 +15,7 @@ module.exports = {
         path: `${cwd}/data/`
       }
     },
-    'gatsby-transformer-json'
+    'gatsby-transformer-json',
+    'gatsby-plugin-offline'
   ]
 }
