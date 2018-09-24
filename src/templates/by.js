@@ -3,7 +3,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 
 // self
-import { Repo, Source, Graph } from '../components/'
+import { Rollo, Repo, Source, Graph } from '../components/'
 
 const style = {
   display: 'grid',
@@ -39,6 +39,7 @@ export default ({
         <Link to={other}>{otherStr}</Link>
         <br />
         <Source />
+        <Rollo />
       </div>
       <div>
         <h1>

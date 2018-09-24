@@ -3,7 +3,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 
 // self
-import { Source } from '../components'
+import { Rollo, Source } from '../components'
 
 export default ({ data: { allUserCountsJson } }) => (
   <div>
@@ -11,6 +11,7 @@ export default ({ data: { allUserCountsJson } }) => (
       <Link to='/'>Home</Link>
       <br />
       <Source />
+      <Rollo />
     </div>
     <ul>
       {Array.from(
