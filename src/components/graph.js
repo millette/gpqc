@@ -41,10 +41,5 @@ export default ({ title, whole }) => {
     }
   }
 
-  return (
-    <div>
-      <h2>Graph</h2>
-      <VegaLite spec={spec} data={{ values }} />
-    </div>
-  )
+  return <VegaLite spec={spec} data={{ values }} />
 }

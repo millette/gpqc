@@ -12,11 +12,20 @@ const style = {
 
 export default ({
   location: { pathname },
-  pageContext: { order, primaryLanguage },
+  pageContext: { order, primaryLanguage, license },
   data: { allUserCountsJson, whole }
 }) => {
   const title = primaryLanguage === undefined ? 'primaryLanguage' : 'license'
   const otherStr = order === 'starsProrata' ? 'by contribs' : 'by stars'
+
+  const pageInfo = {
+    mode: primaryLanguage === undefined ? 'License' : 'Primary Language',
+    by: order === 'starsProrata' ? 'Stars' : 'Contribs',
+    what:
+      (primaryLanguage === undefined ? license : primaryLanguage) ||
+      'unspecified'
+  }
+
   const p0 = pathname.split('/')
   const p = p0.slice(-4)
   p[0] = order === 'starsProrata' ? '/by2' : '/by'
@@ -31,8 +40,16 @@ export default ({
         <br />
         <Source />
       </div>
-      Found {allUserCountsJson.totalCount}
-      {allUserCountsJson.totalCount > 48 && <>{'; showing 48'}</>}
+      <div>
+        <h1>
+          {pageInfo.what} <small>({pageInfo.mode})</small>
+        </h1>
+        <h2>Ordered by {pageInfo.by}</h2>
+        <p>
+          Found {allUserCountsJson.totalCount}
+          {allUserCountsJson.totalCount > 48 && <>{'; showing 48'}</>}
+        </p>
+      </div>
       <div style={style}>
         <Graph
           title={title}
