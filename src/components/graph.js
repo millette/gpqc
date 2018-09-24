@@ -2,10 +2,15 @@
 import React from 'react'
 import VegaLite from 'react-vega-lite'
 
-export default ({ values }) => {
+export default ({ title, whole }) => {
+  const values = whole.map(label => ({
+    personnes: 1,
+    label
+  }))
+
   const spec = {
-    width: 300,
-    height: 300,
+    width: 350,
+    height: 450,
     config: {
       autosize: 'pad'
     },
@@ -19,16 +24,17 @@ export default ({ values }) => {
       },
       y: {
         sort: {
-          op: 'mean',
+          op: 'count',
           order: 'descending',
           field: 'personnes'
         },
-        title: 'el-title-2',
+        title,
         field: 'label',
         type: 'nominal'
       },
       x: {
         title: 'Projets',
+        aggregate: 'count',
         field: 'personnes',
         type: 'quantitative'
       }

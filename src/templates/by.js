@@ -12,48 +12,15 @@ const style = {
 
 export default ({
   location: { pathname },
-  pageContext: { order },
-  data: { allUserCountsJson }
+  pageContext: { order, primaryLanguage },
+  data: { allUserCountsJson, whole }
 }) => {
+  const title = primaryLanguage === undefined ? 'primaryLanguage' : 'license'
   const otherStr = order === 'starsProrata' ? 'by contribs' : 'by stars'
   const p0 = pathname.split('/')
   const p = p0.slice(-4)
   p[0] = order === 'starsProrata' ? '/by2' : '/by'
   const other = p.join('/')
-
-  const s = {}
-  allUserCountsJson.edges.forEach(({ node: { license } }) => {
-    if (!license) {
-      license = 'unspecified'
-    }
-    if (s[license]) {
-      ++s[license]
-    } else {
-      s[license] = 1
-    }
-  })
-
-  const values = []
-  let label
-  for (label in s) {
-    values.push({
-      label,
-      personnes: s[label]
-    })
-  }
-
-  /*
-  const values = [
-    {
-      label: 'gogo',
-      personnes: 35
-    },
-    {
-      label: 'bob',
-      personnes: 55
-    }
-  ]
-  */
 
   return (
     <div>
@@ -67,7 +34,10 @@ export default ({
       Found {allUserCountsJson.totalCount}
       {allUserCountsJson.totalCount > 48 && <>{'; showing 48'}</>}
       <div style={style}>
-        <Graph values={values} />
+        <Graph
+          title={title}
+          whole={whole.edges.map(({ node }) => node[title] || 'unspecified')}
+        />
         {allUserCountsJson.edges.map(({ node }, i) => (
           <Repo
             key={node.nameWithOwner}
@@ -111,6 +81,20 @@ export const query = graphql`
           rolloCountContribs
           contribsProrata
           starsProrata
+        }
+      }
+    }
+
+    whole: allUserCountsJson(
+      filter: {
+        primaryLanguage: { eq: $primaryLanguage }
+        license: { eq: $license }
+      }
+    ) {
+      edges {
+        node {
+          primaryLanguage
+          license
         }
       }
     }
