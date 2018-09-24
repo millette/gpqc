@@ -15,7 +15,7 @@ export default () => (
   <div>
     A <External to='http://dev.rollodeqc.com/'>RoLLodeQc</External> project by{' '}
     <External to='http://robin.millette.info/'>Robin Millette</External>
-    <External to='http://dev.rollodeqc.com/'>
+    <External to='http://dev.rollodeqc.com/' img>
       <img style={style} src={logo} alt='Logo RoLLodeQc' />
     </External>
   </div>

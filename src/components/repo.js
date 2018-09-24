@@ -63,9 +63,9 @@ export default ({ by, node }) => {
   }
   return (
     <div style={style}>
-      <GHLink to={node.nameWithOwner}>
-        <h2>{title}</h2>
-      </GHLink>
+      <h2>
+        <GHLink to={node.nameWithOwner}>{title}</GHLink>
+      </h2>
       <h3>
         <small>by</small> <GHLink to={subtitle}>{subtitle}</GHLink>
       </h3>
