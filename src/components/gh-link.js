@@ -1,12 +1,9 @@
 // npm
 import React from 'react'
 
+// self
+import { External } from '../components'
+
 export default ({ to, children }) => (
-  <a
-    target='_blank'
-    rel='noopener noreferrer'
-    href={`https://github.com/${to}`}
-  >
-    {children}
-  </a>
+  <External to={`https://github.com/${to}`}>{children}</External>
 )
