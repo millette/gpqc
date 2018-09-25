@@ -23,7 +23,8 @@ module.exports = {
         name: 'Québec Projects (GitHub) - RoLLodeQc',
         short_name: 'Projets Qc',
         lang: 'en',
-        start_url: `/${name}/`,
+        start_url: './',
+        scope: `/${name}/`,
         background_color: 'white',
         theme_color: 'black',
         display: 'fullscreen'
