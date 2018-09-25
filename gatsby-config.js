@@ -21,9 +21,9 @@ module.exports = {
       options: {
         icon: 'src/images/logo.png',
         name: 'Québec Projects (GitHub) - RoLLodeQc',
-        short_name: 'Québec GitHub Projects',
+        short_name: 'Projets Qc',
         lang: 'en',
-        start_url: `/${name}`,
+        start_url: `/${name}/`,
         background_color: 'white',
         theme_color: 'black',
         display: 'fullscreen'
