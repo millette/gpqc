@@ -1,7 +1,7 @@
 'use strict'
 
 // self
-const { name } = require('./package.json')
+const { name, description } = require('./package.json')
 
 const cwd = process.cwd()
 
@@ -22,6 +22,7 @@ module.exports = {
         icon: 'src/images/logo.png',
         name: 'Québec Projects (GitHub) - RoLLodeQc',
         short_name: 'Projets Qc',
+        description,
         lang: 'en',
         start_url: './',
         scope: `/${name}/`,
@@ -30,6 +31,7 @@ module.exports = {
         display: 'fullscreen'
       }
     },
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-offline'
   ]
 }

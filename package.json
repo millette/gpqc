@@ -1,5 +1,6 @@
 {
   "name": "gpqc",
+  "description": "Projects with a touch of Québec",
   "version": "0.0.0",
   "main": "index.js",
   "license": "AGPL-3.0",
@@ -24,10 +25,12 @@
     "gatsby": "^2.0.8",
     "gatsby-plugin-manifest": "^2.0.3",
     "gatsby-plugin-offline": "^2.0.5",
+    "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-source-filesystem": "^2.0.1",
     "gatsby-transformer-json": "^2.1.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-helmet": "^5.2.0",
     "react-vega-lite": "^2.0.2",
     "vega-lib": "^4.2.0",
     "vega-lite": "^3.0.0-rc6"
