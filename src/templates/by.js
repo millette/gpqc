@@ -3,7 +3,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 
 // self
-import { Rollo, Repo, Source, Graph } from '../components/'
+import { Rollo, Repo, Source, Graph, Head } from '../components/'
 
 const style = {
   display: 'grid',
@@ -33,6 +33,11 @@ export default ({
 
   return (
     <div>
+      <Head
+        subtitle={`${pageInfo.what} (${pageInfo.mode}) - Ordered by ${
+          pageInfo.by
+        }`}
+      />
       <div>
         <Link to='/'>Home</Link> | <Link to='/by/lic/'>Licenses</Link> |{' '}
         <Link to='/by/lng/'>Languages</Link> |{' '}

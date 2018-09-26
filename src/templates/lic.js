@@ -3,10 +3,11 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 
 // self
-import { Rollo, Source } from '../components'
+import { Rollo, Source, Head } from '../components'
 
 export default ({ data: { allUserCountsJson } }) => (
   <div>
+    <Head subtitle='Software Licenses' />
     <div>
       <Link to='/'>Home</Link>
       <br />
