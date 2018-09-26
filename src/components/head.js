@@ -19,7 +19,7 @@ export default ({ subtitle }) => {
       <title>{title}</title>
       <meta name='description' content={description} />
       <meta name='twitter:site' content='@RoLLodeQc' />
-      <meta name='twitter:card' content={img} />
+      <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:creator' content='@RoLLodeQc' />
       <meta name='twitter:title' content={title} />
       <meta name='twitter:description' content={description} />
