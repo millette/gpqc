@@ -8,10 +8,9 @@ const { name, description } = require('../../package.json')
 const url = `https://millette.github.io/${name}/`
 const sitename = 'Québec GitHub Projects'
 const t1 = 'Québec GitHub Projects'
-const img = `${url}/icons/icon-512x512.png`
+const img = `${url}icons/icon-512x512.png`
 
 // {isBlogPost ? <meta property="og:type" content="article" /> : null}
-// export default (props) => (
 export default ({ subtitle }) => {
   const title = subtitle ? `${t1} - ${subtitle}` : t1
   return (
