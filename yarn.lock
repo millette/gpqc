@@ -4958,18 +4958,18 @@ gatsby-source-filesystem@^2.0.1:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-transformer-json@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-json/-/gatsby-transformer-json-2.1.2.tgz#c561b813c55ac517ccbdefe43063a0782e997f70"
-  integrity sha512-bvT+SK3x4T/hW7DRA2ymsQVsWKlLyUM2YMg8rYYpSuZSJnX/eVaoLQIpMy0MZuuDOAyRK7gwNRq5aULA9OG3BQ==
+gatsby-transformer-json@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-json/-/gatsby-transformer-json-2.1.3.tgz#7b2bb2946d75ebba7f43f2902331449605b2cbfd"
+  integrity sha512-ZPGUgNcTogcyyTI0yNUKeOGzrBTV4Ih6eaK1ZM+0bHxs8G76oPOQqhp1LcetzXznX+RxevTY1vAQV7q9Lj5jTQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
 
-gatsby@^2.0.14:
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.14.tgz#cd7de9d27d9656d1da020a0562628a44643a6fac"
-  integrity sha512-TbzqAA9AlWwQ8BQCDibJMcsDi6Hks4son9DtHdyCpzpw+aouDgPR2Z+rVJ9UIkFqlmrT3MR4E50zftPlhQ6zjg==
+gatsby@^2.0.17:
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.17.tgz#4784f841e1d67e5b6d217c7b831cdd009c213750"
+  integrity sha512-166SSKKFMqU4RsHS/CMiRg3/iU24TL9/vbVn+vFaRK2kWWR5EVvMFGOnon60tSTK8a3X665LYDlc8YTGEmPjGg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
