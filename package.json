@@ -36,7 +36,7 @@
     "vega-lite": "^3.0.0-rc6"
   },
   "devDependencies": {
-    "gh-pages": "^2.0.0",
+    "gh-pages": "^2.0.1",
     "husky": "^1.1.0",
     "lint-staged": "^7.3.0",
     "prettier-standard": "^8.0.1",
