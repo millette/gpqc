@@ -43,13 +43,12 @@
     "standard": "^12.0.1"
   },
   "scripts": {
+    "start": "gatsby develop --port 8001",
     "deploy":
       "rm public/* .cache -fr && gatsby build --prefix-paths && gh-pages -d public",
     "lint": "standard",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "develop": "gatsby develop --port 8001",
-    "dev": "gatsby develop --port 8001",
     "clean": "rm public/* .cache -fr",
     "format": "prettier-standard '**/*.+(js|json|md)'"
   }
